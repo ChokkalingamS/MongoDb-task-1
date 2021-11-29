@@ -35,6 +35,7 @@ db.data.find({product_material:{$eq:"Soft"}}).sort({product_price:1}).pretty()
 db.data.find({ $or: [{ product_color: "indigo" }, { product_price:492 }] }).pretty()
 
 10.Delete the products which product price value are same
+ db.data.aggregate([{$group:{_id:{product_price:"$product_price"},count:{$sum:1}}},{$match: {count: 2}}])
 
 
 
